@@ -2,9 +2,11 @@ import { prisma } from "@/db";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
+// Function that creates todo
 async function createTodo(data: FormData) {
   "use server";
-  //   console.log("Data:", data);
+
+  // Validation of invalid title
   let title = data.get("title")?.valueOf();
   if (typeof title !== "string" || title === "") {
     throw new Error("Invalid Title");
